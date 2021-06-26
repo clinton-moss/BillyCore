@@ -1,0 +1,2 @@
+
+mysql -h localhost -u billyx -pP@55w0rd -e "CREATE DATABASE `Billy`;"
