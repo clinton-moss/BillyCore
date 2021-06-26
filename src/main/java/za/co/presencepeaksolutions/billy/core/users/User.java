@@ -17,14 +17,50 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.hibernate.validator.constraints.NotBlank;
 
+import org.hibernate.search.annotations.Analyze;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.IndexedEmbedded;
+import org.hibernate.search.annotations.Store;
+
 /**
  *
  * @author clinton
  */
 @XmlRootElement
 @Entity
-@Table(name = "User", schema = "BILLY")
+@Table(name = "UserX", schema = "BILLY")
+@Indexed
 public class User implements Serializable {
+
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     /**
      * @return the id
@@ -117,8 +153,13 @@ public class User implements Serializable {
     private String name;
 //   @Column(name="ISBN_NUMBER")
     private String surname;
+
+    @Field(index = Index.YES, analyze = Analyze.YES, store = Store.NO)
     private String email;
     private String mobile;
     @OneToOne(mappedBy = "user")
     private UserProfile profile;
+    
+    private String username;
+    private String password;
 }
