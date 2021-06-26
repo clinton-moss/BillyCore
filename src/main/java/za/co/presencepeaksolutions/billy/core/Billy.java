@@ -20,7 +20,7 @@ import org.springframework.context.annotation.ComponentScan;
 import za.co.presencepeaksolutions.billy.core.users.User;
 
 /**
- *
+ * 
  * @author clinton
  */
 @SpringBootApplication
